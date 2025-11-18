@@ -1,8 +1,7 @@
 # sfo-airport-lakehouse
 SFO passenger & landings lakehouse
-# Airport Operations Lakehouse for SFO (DATA 226)
+# Airport Operations Lakehouse for SFO 
 
-This repository contains the code and artifacts for our DATA 226 term project:
 
 **Title:** Airport Operations Lakehouse for SFO: Passenger & Landings Analytics (1999–2025)  
 **Team:** Samruddhi Suresh Chitnis, Soroor Ghandali, Kanika Mamgain, Anushka Rajesh Khadatkar
