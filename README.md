@@ -4,12 +4,11 @@ SFO passenger & landings lakehouse
 
 
 **Title:** Airport Operations Lakehouse for SFO: Passenger & Landings Analytics (1999–2025)  
-**Team:** Samruddhi Suresh Chitnis, Soroor Ghandali, Kanika Mamgain, Anushka Rajesh Khadatkar
 
 ## Project idea
 
-We combine two public SFO datasets — Air Traffic Passenger Statistics and Air Traffic Landings
-Statistics — into a reusable data warehouse and a small “lakehouse” in Google BigQuery.
+We combine two public SFO datasets; Air Traffic Passenger Statistics and Air Traffic Landings
+Statistics into a reusable data warehouse and a small “lakehouse” in Google BigQuery.
 
 The warehouse has:
 
