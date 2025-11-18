@@ -50,5 +50,5 @@ small NoSQL side store for passenger documents.
 
 
 
-   <img width="2552" height="1086" alt="image" src="https://github.com/user-attachments/assets/94507823-a9a7-4f13-80b8-6e2cb9f9d6d9" />
+   <img width="2542" height="1088" alt="image" src="https://github.com/user-attachments/assets/8e3c9472-ef26-4ca2-b7cb-d2cebf08000f" />
 
