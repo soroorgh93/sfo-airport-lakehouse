@@ -47,3 +47,8 @@ small NoSQL side store for passenger documents.
 4. Optionally, run the CouchDB script to write/read a subset of passenger data as JSON.
 5. Use the analytics notebook to reproduce the charts in the report
    (airline mix, terminal load, passengers per landing, fleet mix).
+
+
+
+   <img width="2552" height="1086" alt="image" src="https://github.com/user-attachments/assets/94507823-a9a7-4f13-80b8-6e2cb9f9d6d9" />
+
