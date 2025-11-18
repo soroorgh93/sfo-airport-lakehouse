@@ -1,17 +1,17 @@
-#**for sending data from notebook to BigQuery**
+# for sending data from notebook to BigQuery 
 pip install google-cloud-bigquery pandas pyarrow db-dtypes
-#**Login from Colab to GCP**
+# Login from Colab to GCP 
 from google.colab import auth
 auth.authenticate_user()
 print("Authenticated.")
-#**Connect to BigQuery project**
+# Connect to BigQuery project 
 from google.cloud import bigquery
 import pandas as pd
 
 PROJECT_ID = "sfo-lakehouse-226"
 client = bigquery.Client(project=PROJECT_ID)
 print("Connected to:", client.project)
-#**Create the schemas**
+# Create the schemas 
 datasets = ["sfo_raw", "sfo_core", "sfo_marts"]
 
 for ds in datasets:
@@ -24,7 +24,7 @@ for ds in datasets:
     except Exception:
         print("Already exists:", dataset_id)
 
-#**Load both CSV in pandas and check if data is correct**
+# Load both CSV in pandas and check if data is correct 
 import io
 
 df_passenger = pd.read_csv("/Air_Traffic_Passenger_Statistics.csv")
@@ -40,7 +40,7 @@ df_passenger["Activity Period"] = df_passenger["Activity Period"].astype("int64"
 df_landings["Activity Period"]  = df_landings["Activity Period"].astype("int64")
 print("Converted Activity Period to int64")
 
-#**Load data from pandas to BigQuery**
+# Load data from pandas to BigQuery 
 from google.cloud import bigquery
 
 #create load job configuration
@@ -62,7 +62,7 @@ for t in ["passenger_raw", "landings_raw"]:
   q = f"SELECT COUNT(*) AS `rows` FROM `{PROJECT_ID}.sfo_raw.{t}`"
   print(t, client.query(q).to_dataframe().iloc[0]["rows"])
   
-#**Insights**
+# Insights 
 from google.colab import auth
 auth.authenticate_user()
 
@@ -75,7 +75,7 @@ sns.set(style="whitegrid")
 PROJECT_ID = "sfo-lakehouse-226"
 client = bigquery.Client(project=PROJECT_ID)
 
-#**Airline Mix – Top 10 Airlines**
+# Airline Mix – Top 10 Airlines 
 query_top10_airlines = """
 SELECT
   REGEXP_REPLACE(operating_airline, r' - PRE .*', '') AS operating_airline,
@@ -108,7 +108,7 @@ plt.tight_layout()
 plt.show()
 
 
-#**Area that are busiest**
+# Area that are busiest 
 query_terminal_top10 = """
 SELECT
   year,
@@ -149,7 +149,7 @@ for i, v in enumerate(df_term_plot["pax_millions"]):
 plt.tight_layout()
 plt.show()
 
-#**Main KPI – Passengers per Landing (Overall SFO)**
+# Main KPI – Passengers per Landing (Overall SFO) 
 query_ppl_overall = """
 SELECT
   year,
@@ -182,7 +182,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-#**Fleet Mix (Wide vs Narrow Body)**
+# Fleet Mix (Wide vs Narrow Body) 
 query_fleet = """
 SELECT
   year,
@@ -233,7 +233,7 @@ plt.tight_layout()
 plt.show()
 
 
-#**To check couchdb is connected to BigQuery**
+# To check couchdb is connected to BigQuery 
 query_count = """
 SELECT COUNT(*) AS row_count
 FROM `sfo-lakehouse-226.sfo_raw.passenger_from_couch`
@@ -242,7 +242,7 @@ FROM `sfo-lakehouse-226.sfo_raw.passenger_from_couch`
 df_count = client.query(query_count).to_dataframe()
 df_count
 
-#**Region wise Passenger**
+# Region wise Passenger 
 
 query_couch_geo = """
 SELECT
@@ -268,7 +268,7 @@ plt.tight_layout()
 plt.show()
 
 
-#**YoY growth by region**
+# YoY growth by region 
 query_yoy_region = """
 WITH yearly_region AS (
   SELECT
@@ -311,7 +311,7 @@ df_yoy_region = client.query(query_yoy_region).to_dataframe()
 df_yoy_region
 
 
-#**Domestic vs International share**
+# Domestic vs International share 
 query_dom_intl = """
 WITH classified AS (
   SELECT
@@ -359,7 +359,7 @@ df_dom_intl = client.query(query_dom_intl).to_dataframe()
 df_dom_intl
 
 
-#**Bonus: Month-of-year seasonality by region**
+# Bonus: Month-of-year seasonality by region 
 query_seasonality = """
 SELECT
   month,
@@ -387,3 +387,4 @@ ORDER BY
 
 df_seasonality = client.query(query_seasonality).to_dataframe()
 df_seasonality
+
