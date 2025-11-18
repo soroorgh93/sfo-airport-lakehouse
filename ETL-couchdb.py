@@ -1,5 +1,5 @@
 # Installing this package to fetch data from an API or web services
-#**Loading two csv files into panda dataframe**
+# Loading two csv files into panda dataframe 
 import pandas as pd
 import requests
 df_passenger = pd.read_csv('Air_Traffic_Passenger_Statistics.csv')
@@ -9,11 +9,11 @@ print("Passenger shape:", df_passenger.shape)
 print("Landings shape :", df_landings.shape)
 df_passenger.head()
 
-#**creating small sample**
+# creating small sample 
 df_passenger_sample = df_passenger.head(500).copy()
 df_landings_sample  = df_landings.head(500).copy()
 
-#**setting CouchDB connection URL and checking**
+# setting CouchDB connection URL and checking 
 COUCH_URL = "http://admin:admin@localhost:5984"
 DB_PASSENGER = "sfo_passenger_docs"
 DB_LANDINGS  = "sfo_landings_docs"
@@ -21,7 +21,7 @@ DB_LANDINGS  = "sfo_landings_docs"
 # Quick connectivity test
 r = requests.get(COUCH_URL)
 print(r.status_code, r.json())
-#**creating couchdb database**
+# creating couchdb database 
 def create_db_if_not_exists(db_name):
     r = requests.put(f"{COUCH_URL}/{db_name}")
     if r.status_code in (201, 202):
@@ -33,7 +33,7 @@ def create_db_if_not_exists(db_name):
 
 create_db_if_not_exists(DB_PASSENGER)
 create_db_if_not_exists(DB_LANDINGS)
-#**inserting data to couchDB**
+# inserting data to couchDB 
 import numpy as np
 import pandas as pd
 
@@ -84,7 +84,7 @@ for row in rows["rows"]:
     print("----")
     print(row["doc"].get("GEO Region"), row["doc"].get("Operating Airline"))
 	
-#**for sending data from notebook to BigQuery**	
+# for sending data from notebook to BigQuery 	
 !pip install google-cloud-bigquery pandas pyarrow db-dtypes
 import os
 
@@ -140,7 +140,7 @@ df_couch = pd.DataFrame(docs)
 print(df_couch.shape)
 df_couch.head()
 
-#**upload cleaned CouchDB data into BigQuery**
+# upload cleaned CouchDB data into BigQuery 
 table_id = f"{PROJECT_ID}.sfo_raw.passenger_from_couch"
 
 job_config = bigquery.LoadJobConfig(
@@ -154,5 +154,6 @@ load_job = client.load_table_from_dataframe(
 )
 
 load_job.result()
+
 
 print("Loaded rows:", df_couch.shape[0], "into", table_id)
