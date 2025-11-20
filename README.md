@@ -26,14 +26,14 @@ small NoSQL side store for passenger documents.
 
 ## Contents
 
-- `notebooks/` – Colab/Jupyter notebooks for:
-  - CSV → BigQuery ETL (`etl_sfo.ipynb`)
-  - Analytics and plots from the marts (`analytics_sfo.ipynb`)
+- `notebooks/` – Colab notebooks for:
+  - CSV → BigQuery ETL 
+  - Analytics and plots from the marts 
 - `sql/` – BigQuery SQL scripts for:
-  - Dimensions (`dims.sql`)
-  - Facts (`facts.sql`)
-  - Marts (`marts.sql`)
-  - SCD Type 1/2/3 demo tables (`scd_demo.sql`)
+  - Dimensions 
+  - Facts
+  - Marts 
+  - SCD Type 1/2/3 demo tables 
 - `diagrams/` – Mermaid / PNG diagrams for the pipeline and star schema.
 - `couchdb/` – Example map/reduce view definitions and a small ETL script for
   CouchDB ↔ BigQuery round-trip.
