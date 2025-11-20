@@ -21,8 +21,9 @@ The warehouse has:
   - `mart_passengers_per_landing` (main KPI)
   - `mart_fleet_mix_monthly`
 
-On top of BigQuery we use Python (Colab/Jupyter) for ETL and analytics, and CouchDB as a
-small NoSQL side store for passenger documents.
+On top of BigQuery we use Python (Colab/Jupyter) for ETL and analytics, and **Apache CouchDB
+as a NoSQL document store** for a slice of the passenger data.
+
 
 ## Contents
 
@@ -35,7 +36,7 @@ small NoSQL side store for passenger documents.
   - Marts 
   - SCD Type 1/2/3 demo tables 
 - `diagrams/` – Mermaid / PNG diagrams for the pipeline and star schema.
-- `couchdb/` – Example map/reduce view definitions and a small ETL script for
+- `couchdb/` – Example **NoSQL** map/reduce view definitions and a small ETL script for
   CouchDB ↔ BigQuery round-trip.
 
 ## How to run (high level)
