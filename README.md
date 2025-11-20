@@ -21,7 +21,7 @@ The warehouse has:
   - `mart_passengers_per_landing` (main KPI)
   - `mart_fleet_mix_monthly`
 
-On top of BigQuery we use Python (Colab/Jupyter) for ETL and analytics, and **Apache CouchDB
+On top of **BigQuery** we use Python (Colab/Jupyter) for ETL and analytics, and **Apache CouchDB
 as a NoSQL document store** for a slice of the passenger data.
 
 
